@@ -1,0 +1,30 @@
+{
+    "name": "Domain Monitor",
+    "description": "Domain Monitoring.",
+    "authors": [
+        {
+            "name": "James Wilson",
+            "email": "james.wilson@cap2.co.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "classmap": [
+            "lib/",
+            "lib/modules/"
+        ],
+        "files": [
+            "config.php"
+        ]
+    },
+    "require": {
+        "vlucas/phpdotenv": "^3.3",
+        "punkstar/ssl": "^0.3.1",
+        "phpmailer/phpmailer": "^6.0",
+        "nesbot/carbon": "^2.0.0",
+        "phpwhois/phpwhois": "^4.2"
+    },
+    "require-dev": {
+        "composer/composer": "^1.8"
+    }
+}
