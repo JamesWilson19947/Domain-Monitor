@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\DomainExpiry;
+namespace DomainMonitor\Modules;
 
-use Alert\SendAlert as Alert;
+use DomainMonitor\SendAlert as Alert;
 use Carbon\Carbon;
 
 
-class DomainCheck
+class DomainExpiry
 {
     private $domainName;
     private $config;

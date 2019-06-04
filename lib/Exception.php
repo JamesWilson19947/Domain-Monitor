@@ -1,9 +1,9 @@
 <?php
 
-namespace Error;
+namespace DomainMonitor;
 
 
-class Exception
+class Exception extends \Exception
 {
     public function errorMessage()
     {

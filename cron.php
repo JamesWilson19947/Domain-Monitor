@@ -2,13 +2,9 @@
 
 namespace CRON;
 
-use Modules\SSL;
-use Config;
-
-# Load Composer
 require __DIR__ . '/vendor/autoload.php';
 
-foreach (Config\Domains::$domains as $domain => $config) {
+foreach (\Config\Domains::$domains as $domain => $config) {
 
     if (empty($config['alert'])) {
         continue;
@@ -20,7 +16,7 @@ foreach (Config\Domains::$domains as $domain => $config) {
 
     # Check SSL
     if (in_array('ssl', $config['checks'])) {
-        $ssl = new \Modules\SSL\SSLCheck($domain, $config);
+        $ssl = new \DomainMonitor\Modules\SSL($domain, $config);
         $expiry = $ssl->returnStartAndEndDate();
         $alert = $ssl->checkAlert($config['alert']['days']);
         if ($alert) {
@@ -30,7 +26,7 @@ foreach (Config\Domains::$domains as $domain => $config) {
 
     # Check Domain Expiry
     if (in_array('domainexpiry', $config['checks'])) {
-        $domain = new \Modules\DomainExpiry\DomainCheck($domain, $config);
+        $domain = new \DomainMonitor\Modules\DomainExpiry($domain, $config);
         $expiry = $domain->returnStartAndEndDate();
         $alert = $domain->checkAlert($config['alert']['days']);
         if ($alert) {

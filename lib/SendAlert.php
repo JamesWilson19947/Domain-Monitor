@@ -1,6 +1,6 @@
 <?php
 
-namespace Alert;
+namespace DomainMonitor;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

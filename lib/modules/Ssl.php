@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\SSL;
+namespace DomainMonitor\Modules;
 
 use Punkstar\Ssl\Reader;
-use Alert\SendAlert as Alert;
+use DomainMonitor\SendAlert as Alert;
 use Carbon\Carbon;
 
 
-class SSLCheck
+class Ssl
 {
     private $domainName;
     private $config;
@@ -19,7 +19,7 @@ class SSLCheck
         $this->config = $config;
 
         if (!$this->config) {
-            throw new Error\Exception("Config not defined correctly.");
+            throw new \DomainMonitor\Exception("Config not defined correctly.");
         }
     }
 

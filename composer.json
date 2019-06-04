@@ -9,10 +9,9 @@
     ],
     "minimum-stability": "stable",
     "autoload": {
-        "classmap": [
-            "lib/",
-            "lib/modules/"
-        ],
+        "psr-4": {
+            "DomainMonitor\\": "./lib/"
+        },
         "files": [
             "config.php"
         ]
