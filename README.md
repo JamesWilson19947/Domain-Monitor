@@ -1,3 +1,6 @@
+# A warning
+This project is still being built and its also being built from someone who is learning PHP, so I wouldn't rely on this for anything! 😫 Feel free to contribute and tell me what I did wrong however! 😉
+
 # Domain-Monitor
 
 Domain Monitor is a small project, which allows you to set up domains, it can then send you Email Notifications when a domain is about to expire.
