@@ -22,7 +22,10 @@
         "punkstar/ssl": "^0.3.1",
         "phpmailer/phpmailer": "^6.0",
         "nesbot/carbon": "^2.0.0",
-        "phpwhois/phpwhois": "^4.2"
+        "phpwhois/phpwhois": "^4.2",
+        "filebase/filebase": "1.0",
+        "jenssegers/blade": "^1.2",
+        "klein/klein": "^2.1"
     },
     "require-dev": {
         "composer/composer": "^1.8"

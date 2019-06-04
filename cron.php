@@ -24,7 +24,7 @@ foreach(Config\Domains::$domains as $domain => $config){
 		$expiry = $ssl->returnStartAndEndDate();
 		$alert = $ssl->checkAlert($config['alert']['days']);
 		if($alert){
-			$ssl->sendAlert();
+			// $ssl->sendAlert();
 		}
 	}
 
@@ -34,7 +34,7 @@ foreach(Config\Domains::$domains as $domain => $config){
 		$expiry = $domain->returnStartAndEndDate();
 		$alert = $domain->checkAlert($config['alert']['days']);
 		if($alert){
-			$domain->sendAlert();
+			// $domain->sendAlert();
 		}
 	}
 }

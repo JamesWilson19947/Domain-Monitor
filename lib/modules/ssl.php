@@ -11,10 +11,41 @@ class SSLCheck {
 	private $domainName;
 	private $config;
 	private $expiry;
+	private $db;
 
 	function __construct($domainName, $config){
-		$this->domainName = $domainName;
+		
 		$this->config = $config;
+
+	   $disallowed = array('http://', 'https://');
+	   foreach($disallowed as $d) {
+	      if(strpos($domainName, $d) === 0) {
+	         $domainName = str_replace($d, '', $domainName);
+	      }
+	   }
+
+	   $this->domainName = $domainName;
+
+	   	$dotenv = \Dotenv\Dotenv::create(__DIR__ . '/../../');
+		$dotenv->load();
+
+	   $this->db = new \Filebase\Database([
+		    'dir'            => $_ENV['STORAGE_LOCATION'],
+		    'backupLocation' => $_ENV['BACKUPS_LOCATION'],
+		    'format'         => \Filebase\Format\Json::class,
+		    'cache'          => true,
+		    'cache_expires'  => 1800,
+		    'pretty'         => true,
+		    'safe_filename'  => true,
+		    'read_only'      => false,
+		    'validate' => [
+		        'domain'   => [
+		            'valid.type' => 'string',
+		            'valid.required' => true
+		        ]
+		    ]
+		]);
+
 
 		if(!$this->config){
 			throw new Error\Exception("Config not defined correctly.");
@@ -23,6 +54,8 @@ class SSLCheck {
 
 	function returnStartAndEndDate(){
 		$reader = new Reader();
+		$item = $this->db->get($this->clean($this->domainName));
+		$item->domain = $this->domainName;
 		
 		$certificate = $reader->readFromUrl($this->domainName);
 		
@@ -30,6 +63,11 @@ class SSLCheck {
 
 		$array['to'] = $certificate->validTo()->format('Y-m-d h:i:s');
 		$array['from'] = $certificate->validFrom()->format('Y-m-d h:i:s');
+
+		$item->SSLExpiry = $array['to'];
+		$item->SSLStart = $array['from'];
+
+		$item->save();
 
 		$this->expiry = $array;
 
@@ -57,4 +95,19 @@ class SSLCheck {
 		}
 
 	}
+
+	function returnCachedData(){
+		
+	    $item = $this->db->get($this->clean($this->domainName));
+
+	    return $item->SSLExpiry;
+
+	}
+
+	function clean($string) {
+	   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+	   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+	}
+
 }

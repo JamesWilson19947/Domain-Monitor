@@ -2,3 +2,7 @@ composer.phar
 config.php
 .env
 /vendor/
+/storage/
+/backups/
+/cache/
+/public/storage/
