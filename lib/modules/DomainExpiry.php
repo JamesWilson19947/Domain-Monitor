@@ -85,6 +85,7 @@ class DomainExpiry
         $query = $this->domainName;
         $result = $whois->lookup($query, false);
 
+
         $registered = isset($result['regrinfo']['domain']['created']);
 
         if (!$registered) {

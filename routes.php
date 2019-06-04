@@ -23,12 +23,16 @@ $router->respond('GET', '/', function () {
         if (in_array('ssl', $config['checks'])) {
 
             $ssl = new \DomainMonitor\Modules\Ssl($domain, $config);
-            $domainArray[ $domain ]['SSLExpiry'] = Carbon::parse($ssl->returnCachedData());
+            $domainArray[ $domain ]['SSLExpiry'] = Carbon::parse($ssl->returnCachedData())->format('d/m/Y');
+
+
+
         }
 
         if (in_array('domainexpiry', $config['checks'])) {
             $domainexpiry = new \DomainMonitor\Modules\DomainExpiry($domain, $config);
-            $domainArray[ $domain ]['DomainExpiry'] = $domainexpiry->returnCachedData();
+            $domainArray[ $domain ]['DomainExpiry'] = Carbon::parse($domainexpiry->returnCachedData())->format('d/m/Y');
+
         }
     }
 

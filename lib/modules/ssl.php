@@ -104,8 +104,12 @@ class Ssl
 
     function returnCachedData()
     {
-
         $item = $this->db->get($this->clean($this->domainName));
+
+        if (!$item->SSLExpiry) {
+            $this->returnStartAndEndDate();
+            $item = $this->db->get($this->clean($this->domainName));
+        }
 
         return $item->SSLExpiry;
     }
