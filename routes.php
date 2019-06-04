@@ -4,7 +4,6 @@ namespace Routes;
 
 use Jenssegers\Blade\Blade;
 use Config;
-use Modules\SSL;
 use Carbon\Carbon;
 
 $dotenv = \Dotenv\Dotenv::create(__DIR__ . '../');
@@ -16,20 +15,20 @@ $router->respond('GET', '/', function () {
     $blade = new Blade('../views', '../cache');
 
     $domainArray = [];
-    
-    foreach(Config\Domains::$domains as $domain => $config){
 
-        $domainArray[$domain]['domain'] = $domain;
+    foreach (Config\Domains::$domains as $domain => $config) {
 
-        if(in_array('ssl', $config['checks'])){
+        $domainArray[ $domain ]['domain'] = $domain;
 
-            $ssl = new \Modules\SSL\SSLCheck($domain, $config);
-            $domainArray[$domain]['SSLExpiry'] = Carbon::parse($ssl->returnCachedData());
+        if (in_array('ssl', $config['checks'])) {
+
+            $ssl = new \DomainMonitor\Modules\Ssl($domain, $config);
+            $domainArray[ $domain ]['SSLExpiry'] = Carbon::parse($ssl->returnCachedData());
         }
-        
-        if(in_array('domainexpiry', $config['checks'])){
-            $domainexpiry = new \Modules\DomainExpiry\DomainCheck($domain, $config);
-            $domainArray[$domain]['DomainExpiry'] = $domainexpiry->returnCachedData();
+
+        if (in_array('domainexpiry', $config['checks'])) {
+            $domainexpiry = new \DomainMonitor\Modules\DomainExpiry($domain, $config);
+            $domainArray[ $domain ]['DomainExpiry'] = $domainexpiry->returnCachedData();
         }
     }
 
