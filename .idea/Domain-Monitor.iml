@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/justinrainbow/json-schema" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpwhois/phpwhois" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/punkstar/ssl" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/seld/jsonlint" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/seld/phar-utils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php73" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
