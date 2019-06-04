@@ -16,11 +16,12 @@ foreach (\Config\Domains::$domains as $domain => $config) {
 
     # Check SSL
     if (in_array('ssl', $config['checks'])) {
-        $ssl = new \DomainMonitor\Modules\SSL($domain, $config);
+        $ssl = new \DomainMonitor\Modules\Ssl($domain, $config);
         $expiry = $ssl->returnStartAndEndDate();
         $alert = $ssl->checkAlert($config['alert']['days']);
         if ($alert) {
-            $ssl->sendAlert();
+            // FIXME
+            // $ssl->sendAlert();
         }
     }
 
@@ -30,7 +31,8 @@ foreach (\Config\Domains::$domains as $domain => $config) {
         $expiry = $domain->returnStartAndEndDate();
         $alert = $domain->checkAlert($config['alert']['days']);
         if ($alert) {
-            $domain->sendAlert();
+            // FIXME
+            // $domain->sendAlert();
         }
     }
 }
